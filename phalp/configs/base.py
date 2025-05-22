@@ -4,8 +4,12 @@ from typing import Dict, Optional
 
 import hydra
 from omegaconf import MISSING
+import platform
 
-CACHE_DIR = os.path.join(os.environ.get("HOME"), ".cache")  # None if the variable does not exist
+if platform.system() == "Windows":
+    CACHE_DIR = os.path.join('./', ".cache")  # None if the variable does not exist
+elif platform.system() == "Linux":
+    CACHE_DIR = os.path.join(os.environ.get("HOME"), ".cache")  # None if the variable does not exist
 
 @dataclass
 class VideoConfig:

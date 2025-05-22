@@ -1,6 +1,11 @@
 import os
 import torch
-os.environ['PYOPENGL_PLATFORM'] = 'egl'
+import platform
+if platform.system() == 'Windows':
+    pass
+    #os.environ['PYOPENGL_PLATFORM'] = 'osmesa'
+elif platform.system() == 'Linux':
+    os.environ['PYOPENGL_PLATFORM'] = 'egl'
 import numpy as np
 import pyrender
 import trimesh
